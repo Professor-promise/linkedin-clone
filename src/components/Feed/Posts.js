@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import { PostsIcons } from '../shared/data';
 import Person from '../shared/Person';
 
-const Posts = ({ message }) => {
+const Posts = forwardRef(({ message }) => {
   const [isShow, setIsShow] = useState(false);
 
   const showMessage = (e) => {
@@ -50,6 +50,6 @@ const Posts = ({ message }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Posts;
