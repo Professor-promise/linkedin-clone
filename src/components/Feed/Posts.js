@@ -2,7 +2,7 @@ import { useState, forwardRef } from 'react';
 import { PostsIcons } from '../shared/data';
 import Person from '../shared/Person';
 
-const Posts = forwardRef(({ message }) => {
+const Posts = forwardRef(({ message }, ref) => {
   const [isShow, setIsShow] = useState(false);
 
   const showMessage = (e) => {
@@ -11,7 +11,7 @@ const Posts = forwardRef(({ message }) => {
   };
 
   return (
-    <div className='w-full mt-4 bg-white border rounded-xl divide-y'>
+    <div className='w-full mt-4 bg-white border rounded-xl divide-y' ref={ref}>
       <div className='flex flex-col gap-6 p-6'>
         <Person
           descStyle={{ fontSize: '0.8rem' }}
