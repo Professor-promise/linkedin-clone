@@ -63,11 +63,9 @@ const Feed = () => {
         </div>
       ) : (
         <FlipMove>
-          <>
-            {posts?.map(({ id, message }) => (
-              <Posts key={id} message={message} />
-            ))}
-          </>
+          {posts?.map(({ id, message }) => (
+            <Posts key={id} message={message} />
+          ))}
         </FlipMove>
       )}
     </div>

@@ -21,11 +21,13 @@ const Register = () => {
     }));
   };
 
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const userCredentail = await createUserWithEmailAndPassword(
@@ -43,13 +45,16 @@ const Register = () => {
       dataCopy.timestamp = serverTimestamp();
 
       await setDoc(doc(db, 'users', user.uid), dataCopy);
-
+      toast('Logged in successful');
       navigate('/feed');
+      setLoading(false);
     } catch (error) {
       if (!name) {
         toast.error('Please enter your full name');
+        setLoading(false);
       } else {
         toast.error('Something went wrong with registration');
+        setLoading(false);
       }
     }
   };
@@ -130,7 +135,11 @@ const Register = () => {
               className='bg-mainBlue text-mainWhite p-2 font-medium rounded-full hover:bg-hoverBlue'
               onClick={handleSubmit}
             >
-              Agree & Join
+              {loading ? (
+                <p className='font-bold'>Loading...</p>
+              ) : (
+                'Agree & Join'
+              )}
             </button>
           </form>
           <div className='flex items-center gap-4'>

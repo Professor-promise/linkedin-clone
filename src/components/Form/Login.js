@@ -25,11 +25,13 @@ const Login = () => {
     }));
   };
 
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const userCredential = await signInWithEmailAndPassword(
@@ -39,10 +41,13 @@ const Login = () => {
       );
 
       if (userCredential.user) {
+        toast('Logged in successful');
         navigate('/feed');
+        setLoading(false);
       }
     } catch (error) {
       toast.error('Incorect User Credentials');
+      setLoading(false);
     }
   };
 
@@ -62,6 +67,7 @@ const Login = () => {
           timestamp: serverTimestamp(),
         });
       }
+      toast('Logged in successful');
       navigate('/feed');
     } catch (error) {
       toast.error('Something went wrong');
@@ -132,7 +138,7 @@ const Login = () => {
               className='bg-mainBlue text-mainWhite p-2 font-medium rounded-full hover:bg-hoverBlue'
               onClick={handleSubmit}
             >
-              Login
+              {loading ? <p className='font-bold'>Logging in...</p> : 'Login'}
             </button>
           </form>
           <div className='flex items-center gap-4'>
@@ -155,7 +161,7 @@ const Login = () => {
           <p className='text-center'>
             New to LinkedIn?
             <span className='hover:underline text-mainBlue cursor-pointer px-1 font-medium '>
-              <Link to='/register'>Sign up</Link>
+              <Link to='/register'>Join now</Link>
             </span>
           </p>
         </div>

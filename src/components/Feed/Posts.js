@@ -11,7 +11,7 @@ const Posts = forwardRef(({ message }, ref) => {
   };
 
   return (
-    <div className='w-full mt-4 bg-white border rounded-xl divide-y' ref={ref}>
+    <div ref={ref} className='w-full mt-4 bg-white border rounded-xl divide-y'>
       <div className='flex flex-col gap-6 p-6'>
         <Person
           descStyle={{ fontSize: '0.8rem' }}
