@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import FlipMove from 'react-flip-move';
 import Posts from './Posts';
 import SearchInput from './SearchInput';
 import { db } from '../../firebaseConfig';
@@ -62,11 +61,11 @@ const Feed = () => {
           <div className='spinner mt-1'></div>
         </div>
       ) : (
-        <FlipMove>
+        <>
           {posts?.map(({ id, message }) => (
             <Posts key={id} message={message} />
           ))}
-        </FlipMove>
+        </>
       )}
     </div>
   );
