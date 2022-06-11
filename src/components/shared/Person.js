@@ -40,6 +40,7 @@ const Person = ({ className, style, descStyle, titleStyle, imgClassName }) => {
         <h2
           className='font-medium text-[1.1rem] capitalize group-hover:underline'
           style={titleStyle}
+          onClick={onChange}
         >
           {name}
         </h2>
