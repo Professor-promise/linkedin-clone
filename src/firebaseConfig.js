@@ -6,12 +6,12 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyC-97lmuNgpp7dkfNwsj0biKzf1SoVmrp8',
-  authDomain: 'linkedin-clone-43e9c.firebaseapp.com',
-  projectId: 'linkedin-clone-43e9c',
-  storageBucket: 'linkedin-clone-43e9c.appspot.com',
-  messagingSenderId: '673027913698',
-  appId: '1:673027913698:web:9e9f55c95e001093fbebbb',
+  apiKey: 'AIzaSyCfEQw31DZ6TtXCkPspOKvsycurN8As1JY',
+  authDomain: 'linkedin-clone-f2d5b.firebaseapp.com',
+  projectId: 'linkedin-clone-f2d5b',
+  storageBucket: 'linkedin-clone-f2d5b.appspot.com',
+  messagingSenderId: '208476015427',
+  appId: '1:208476015427:web:3b094a8e3afadbd44fbdf6',
 
   hosting: {
     redirects: [
@@ -45,8 +45,6 @@ export function useAuth() {
   }, []);
   return currentUser;
 }
-
-// upload image
 
 export async function upload(file, currentUser, setLoading) {
   const fileRef = ref(storage, currentUser.uid + '.png');
